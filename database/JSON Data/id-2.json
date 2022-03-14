@@ -1,13 +1,11 @@
 {
+  "id": "2",
 
-    "id": "2",
+  "category": "business",
 
-    "category": "business",
+  "name": "reminder",
 
-    "name": "reminder",
+  "description": "Set up meeting with Tom.",
 
-    "description": "Set up meeting with Tom.",
-
-    "isComplete": false
-
+  "isComplete": false
 }

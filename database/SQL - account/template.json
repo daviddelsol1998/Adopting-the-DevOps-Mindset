@@ -1,72 +1,72 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "name": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "locationName": {
-            "type": "string"
-        },
-        "defaultExperience": {
-            "type": "string"
-        },
-        "isZoneRedundant": {
-            "type": "string"
-        },
-        "pairedLocation": {
-            "type": "string"
-        },
-        "pairedLocationName": {
-            "type": "string"
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "apiVersion": "2021-10-15-preview",
-            "kind": "GlobalDocumentDB",
-            "type": "Microsoft.DocumentDb/databaseAccounts",
-            "name": "[parameters('name')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "locations": [
-                    {
-                        "id": "[concat(parameters('name'), '-', parameters('location'))]",
-                        "failoverPriority": 0,
-                        "locationName": "[parameters('locationName')]"
-                    },
-                    {
-                        "id": "[concat(parameters('name'), '-', parameters('pairedLocation'))]",
-                        "failoverPriority": 1,
-                        "locationName": "[parameters('pairedLocationName')]"
-                    }
-                ],
-                "backupPolicy": {
-                    "type": "Periodic",
-                    "periodicModeProperties": {
-                        "backupIntervalInMinutes": 240,
-                        "backupRetentionIntervalInHours": 8,
-                        "backupStorageRedundancy": "Geo"
-                    }
-                },
-                "isVirtualNetworkFilterEnabled": false,
-                "virtualNetworkRules": [],
-                "ipRules": [],
-                "dependsOn": [],
-                "enableMultipleWriteLocations": true,
-                "capabilities": [],
-                "enableFreeTier": true
-            },
-            "tags": {
-                "defaultExperience": "[parameters('defaultExperience')]",
-                "hidden-cosmos-mmspecial": ""
-            }
-        }
-    ],
-    "outputs": {}
+    "location": {
+      "type": "string"
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "defaultExperience": {
+      "type": "string"
+    },
+    "isZoneRedundant": {
+      "type": "string"
+    },
+    "pairedLocation": {
+      "type": "string"
+    },
+    "pairedLocationName": {
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "apiVersion": "2021-10-15-preview",
+      "kind": "GlobalDocumentDB",
+      "type": "Microsoft.DocumentDb/databaseAccounts",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "locations": [
+          {
+            "id": "[concat(parameters('name'), '-', parameters('location'))]",
+            "failoverPriority": 0,
+            "locationName": "[parameters('locationName')]"
+          },
+          {
+            "id": "[concat(parameters('name'), '-', parameters('pairedLocation'))]",
+            "failoverPriority": 1,
+            "locationName": "[parameters('pairedLocationName')]"
+          }
+        ],
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        },
+        "isVirtualNetworkFilterEnabled": false,
+        "virtualNetworkRules": [],
+        "ipRules": [],
+        "dependsOn": [],
+        "enableMultipleWriteLocations": true,
+        "capabilities": [],
+        "enableFreeTier": true
+      },
+      "tags": {
+        "defaultExperience": "[parameters('defaultExperience')]",
+        "hidden-cosmos-mmspecial": ""
+      }
+    }
+  ],
+  "outputs": {}
 }

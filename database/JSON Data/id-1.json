@@ -1,13 +1,11 @@
 {
+  "id": "1",
 
-    "id": "1",
+  "category": "personal",
 
-    "category": "personal",
+  "name": "groceries",
 
-    "name": "groceries",
+  "description": "Pick up apples and strawberries.",
 
-    "description": "Pick up apples and strawberries.",
-
-    "isComplete": false
-
+  "isComplete": false
 }
